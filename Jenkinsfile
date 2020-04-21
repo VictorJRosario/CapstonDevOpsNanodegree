@@ -12,7 +12,7 @@ node {
     }
     stage("Linting") {
       echo 'Linting...'
-      sh 'C:\Users\Usuario\scoop\apps\hadolint\1.17.5 Dockerfile'
+      sh '/home/linuxbrew/.linuxbrew/hadolint Dockerfile'
     }
     stage('Building image') {
 	    echo 'Building Docker image...'
