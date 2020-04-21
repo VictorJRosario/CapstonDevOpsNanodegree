@@ -12,19 +12,8 @@ node {
     }
     stage("Linting") {
       echo 'Linting...'
-      agents {
-        docker {
-          image 'hadolint/hadolint:latest-debian'
-        }
-      }
-      steps {
-        sh 'hadolint dockerfiles/* | tee -a hadolint_lint.txt'
-      }
-      post {
-        always {
-          archiveArtifacts 'hadolint_lint.txt'
-        }
-      }
+
+      sh '/home/ubuntu/.local/bin/hadolint Dockerfile'
     }
     stage('Building image') {
 	    echo 'Building Docker image...'
