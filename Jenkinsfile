@@ -11,7 +11,7 @@ node {
       sh 'docker -v'
     }
     stage("Linting") {
-      echo 'Linting...'
+      echo 'Linting....'
 
       sh '/usr/bin/hadolint Dockerfile'
     }
