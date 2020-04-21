@@ -12,7 +12,19 @@ node {
     }
     stage("Linting") {
       echo 'Linting...'
-      sh '/home/linuxbrew/.linuxbrew/Cellar/hadolint/1.17.5/bin Dockerfile'
+      agents {
+        docker {
+          image 'hadolint/hadolint:latest-debian'
+        }
+      }
+      steps {
+        sh 'hadolint dockerfiles/* | tee -a hadolint_lint.txt'
+      }
+      post {
+        always {
+          archiveArtifacts 'hadolint_lint.txt'
+        }
+      }
     }
     stage('Building image') {
 	    echo 'Building Docker image...'
