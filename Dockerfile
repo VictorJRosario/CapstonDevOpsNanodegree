@@ -1,35 +1,33 @@
-FROM python:3.7.3-stretch
+## Step 1
+# Choose image
+FROM node:10 as react-build
 
-## Step 1:
-# Create a working directory
-
+## Step 2
+# Create working directory
 WORKDIR /app
 
-## Step 2:
-# Copy source code to working directory
+## Step 3
+# Copy dependencies
+COPY . ./
 
-COPY . app.py /app/
-COPY . model_data /app/
+## Step 4
+# Run yarn & build
+RUN yarn
+RUN yarn build
 
-## Step 3:
-# Install packages from requirements.txt
-# hadolint ignore=DL3013
+### Second Process
+## Step 1
+# Using nginx
+FROM nginx:alpine
 
-RUN pip install pip==20.0.2
-RUN pip install -r requirements.txt
+## Step 2
+# Copy dependencies
+COPY --from=react-build /app/build /usr/share/nginx/html
 
-## Step 4:
-# Set a default port
-ARG PORT=7777
+## Step 3
+# Expose port
+EXPOSE 80
 
-## Step 5:
-# Expose port 80
-
-EXPOSE $PORT
-
-## Step 6:
-# Run app.py at container launch
-
-CMD ["python", "app.py"]
-
-## Re-used file from last project
+## Step 4
+# Run commands
+CMD ["nginx", "-g", "daemon off;"]
