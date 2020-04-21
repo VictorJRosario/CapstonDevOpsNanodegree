@@ -1,5 +1,7 @@
 # CapstoneDevOpsNanodegree
 
+A simple React App to Dockerize it and deploy to AWS.
+
 ## Details
 
 * Creates a React-App
