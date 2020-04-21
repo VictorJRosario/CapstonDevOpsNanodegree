@@ -19,11 +19,15 @@ RUN pip install pip==20.0.2
 RUN pip install -r requirements.txt
 
 ## Step 4:
-# Expose port 80
-
-EXPOSE 80
+# Set a default port
+ARG PORT=7777
 
 ## Step 5:
+# Expose port 80
+
+EXPOSE $PORT
+
+## Step 6:
 # Run app.py at container launch
 
 CMD ["python", "app.py"]
