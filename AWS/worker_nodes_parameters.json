@@ -1,0 +1,15 @@
+  
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "CapstoneProject"
+    },
+    {
+        "ParameterKey": "SshKey",
+        "ParameterValue": "Capstone_Key_Pair"
+    },
+    {
+        "ParameterKey":"DesiredInstances",
+        "ParameterValue": "3"
+    }
+]
