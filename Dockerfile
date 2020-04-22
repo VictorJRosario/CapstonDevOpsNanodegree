@@ -1,6 +1,6 @@
 ## Step 1
 # Choose image
-FROM node:10 as react-build
+FROM node:8 as react-build
 
 ## Step 2
 # Create working directory
@@ -12,7 +12,7 @@ COPY . ./
 
 ## Step 4
 # Run yarn & build
-RUN npm install -g yarn
+RUN npm install -g yarn==1.22.4
 RUN yarn build
 
 ### Second Process
