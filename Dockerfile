@@ -12,7 +12,7 @@ COPY . ./
 
 ## Step 4
 # Run yarn & build
-RUN yarn
+RUN npm install -g yarn
 RUN yarn build
 
 ### Second Process
