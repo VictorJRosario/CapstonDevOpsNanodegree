@@ -12,7 +12,7 @@ COPY . ./
 
 ## Step 4
 # Run yarn & build
-RUN npm install -g yarn==1.22.4
+RUN npm install -g yarn@1.22.4
 RUN yarn build
 
 ### Second Process
