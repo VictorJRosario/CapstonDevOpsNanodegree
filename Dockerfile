@@ -12,7 +12,7 @@ COPY . ./
 
 ## Step 4
 # Run yarn & build
-RUN yarn --network-timeout 1000000
+RUN yarn
 RUN yarn build
 
 ### Second Process
