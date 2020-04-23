@@ -1,5 +1,8 @@
 node {
     def registry = 'victorrosario/capstone-project'
+    script {
+      System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL", "3800");
+    }
     stage('Checking out git repo') {
       echo 'Checkout...'
       checkout scm
